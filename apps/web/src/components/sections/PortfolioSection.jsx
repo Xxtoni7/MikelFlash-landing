@@ -1,16 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { motion, AnimatePresence } from 'framer-motion';
-import {
-    ArrowRight,
-    ChevronDown,
-    ChevronLeft,
-    ChevronRight,
-    ChevronUp,
-    MapPin,
-    X,
-} from 'lucide-react';
-
+import { ArrowRight, ChevronDown, ChevronLeft, ChevronRight, ChevronUp, MapPin, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import PortfolioCard from '@/components/PortfolioCard.jsx';
 

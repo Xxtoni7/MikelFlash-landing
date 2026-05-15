@@ -1,16 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { motion } from 'framer-motion';
-import {
-    Phone,
-    Mail,
-    MapPin,
-    Clock,
-    MessageCircle,
-} from 'lucide-react';
+import { Phone, Mail, MapPin, Clock, MessageCircle } from 'lucide-react';
 
 import ContactForm from '@/components/ContactForm.jsx';
 
-function ContactSection() {
+function ContactSection({ selectedService }) {
     return (
         <section id="contacto" className="py-24 bg-gradient-to-b from-background to-card/30 relative overflow-hidden">
             <div className="absolute inset-0 opacity-5">
@@ -45,7 +40,7 @@ function ContactSection() {
                         transition={{ duration: 0.8 }}
                         className="bg-card/50 backdrop-blur-sm rounded-2xl p-8 border border-border"
                     >
-                        <ContactForm />
+                        <ContactForm selectedService={selectedService} />
                     </motion.div>
 
                     <motion.div
@@ -144,5 +139,9 @@ function ContactSection() {
         </section>
     );
 }
+
+ContactSection.propTypes = {
+    selectedService: PropTypes.string,
+};
 
 export default ContactSection;

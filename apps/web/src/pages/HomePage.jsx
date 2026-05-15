@@ -22,6 +22,7 @@ import { useParallax } from '@/hooks/useParallax';
 
 function HomePage() {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
+  const [selectedService, setSelectedService] = useState('');
   const parallaxOffset = useParallax(0.5);
 
   const services = [
@@ -235,6 +236,23 @@ function HomePage() {
       });
     }
   };
+
+  const handleServiceContact = (serviceTitle) => {
+    setSelectedService(serviceTitle);
+
+    const element = document.querySelector('#contacto');
+
+    if (element) {
+      const offset = 80;
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth',
+      });
+    }
+  };
   
   return (
     <>
@@ -255,7 +273,10 @@ function HomePage() {
 
       <AboutSection />
 
-      <ServicesSection services={services} />
+      <ServicesSection
+        services={services}
+        onServiceContact={handleServiceContact}
+      />
 
       <PortfolioSection
         portfolioItems={portfolioItems}
@@ -268,7 +289,7 @@ function HomePage() {
         setCurrentTestimonial={setCurrentTestimonial}
       />
 
-      <ContactSection />
+      <ContactSection selectedService={selectedService} />
 
       <Footer />
     </>

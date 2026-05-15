@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
-function ServicesSection({ services }) {
+function ServicesSection({ services, onServiceContact }) {
     const [activeIndex, setActiveIndex] = useState(0);
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
     const activeService = services[activeIndex];
@@ -260,7 +260,10 @@ function ServicesSection({ services }) {
                                 </div>
 
                                 <div className="mt-10 flex justify-center lg:justify-start">
-                                    <Button className="group bg-primary text-background hover:bg-primary/90 px-7 py-6 rounded-xl font-semibold">
+                                    <Button
+                                        onClick={() => onServiceContact(activeService.title)}
+                                        className="group bg-primary text-background hover:bg-primary/90 px-7 py-6 rounded-xl font-semibold"
+                                    >
                                         Consultar este servicio
                                         <ArrowRight
                                             size={18}
@@ -286,6 +289,7 @@ ServicesSection.propTypes = {
             images: PropTypes.arrayOf(PropTypes.string).isRequired,
         })
     ).isRequired,
+    onServiceContact: PropTypes.func.isRequired,
 };
 
 export default ServicesSection;

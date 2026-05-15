@@ -1,13 +1,13 @@
-
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import PropTypes from 'prop-types';
 import { toast } from 'sonner';
 import { Send } from 'lucide-react';
 
-function ContactForm() {
+function ContactForm({ selectedService }) {
   const [formData, setFormData] = useState({
     nombre: '',
     email: '',
@@ -17,6 +17,15 @@ function ContactForm() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errors, setErrors] = useState({});
+
+  useEffect(() => {
+    if (selectedService) {
+      setFormData((prev) => ({
+        ...prev,
+        servicio: selectedService,
+      }));
+    }
+  }, [selectedService]);
 
   const servicios = [
     'Pintura Interior/Exterior',
@@ -176,5 +185,9 @@ function ContactForm() {
     </form>
   );
 }
+
+ContactForm.propTypes = {
+  selectedService: PropTypes.string,
+};
 
 export default ContactForm;
