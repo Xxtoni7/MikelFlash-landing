@@ -56,7 +56,7 @@ function AboutSection() {
                         <div className="absolute -inset-4 bg-gradient-to-r from-primary/20 to-primary/5 rounded-3xl blur-2xl" />
 
                         <img
-                            src="https://mx.habcdn.com/photos/project/hd/2-772164.jpg"
+                            src='/logo/MikelFLashLogo.png'
                             alt="Equipo de trabajo"
                             className="relative rounded-2xl shadow-2xl w-full h-auto"
                         />

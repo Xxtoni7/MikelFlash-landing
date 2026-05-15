@@ -49,9 +49,13 @@ function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           <a href="#hero" onClick={(e) => scrollToSection(e, '#hero')} className="flex items-center space-x-2">
-            <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
-              <span className="text-background font-bold text-xl">MF</span>
-            </div>
+            <div className="w-12 h-10 rounded-xl overflow-hidden border border-primary/30 shadow-lg shadow-primary/20 bg-black/20 backdrop-blur-sm">
+              <img
+                src="/logo/MF.png"
+                alt="Mikel Flash"
+                className="w-full h-full object-cover"
+              />
+            </div>  
             <span className="text-xl font-bold text-foreground">
               Mikel <span className="text-primary">Flash</span>
             </span>

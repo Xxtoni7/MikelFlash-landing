@@ -42,7 +42,7 @@ function ReviewsSection({ testimonials, currentTestimonial, setCurrentTestimonia
                     <div className="flex justify-center items-center space-x-2 mt-8">
                         {testimonials.map((testimonial, index) => (
                             <button
-                                key={testimonial.id}
+                                key={testimonial.name}
                                 onClick={() => setCurrentTestimonial(index)}
                                 className={`w-3 h-3 rounded-full transition-all duration-300 ${
                                     index === currentTestimonial ? 'bg-primary w-8' : 'bg-muted hover:bg-primary/50'
