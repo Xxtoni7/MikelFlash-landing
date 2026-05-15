@@ -95,37 +95,97 @@ function HomePage() {
 
   const portfolioItems = [
     {
-      image: 'https://images.unsplash.com/photo-1605989287045-4bb5808fe1f4',
+      id: 1,
       category: 'Pintura',
-      title: 'Renovación Completa de Fachada'
+      title: 'Renovación completa de fachada',
+      description:
+        'Trabajo integral de pintura exterior con preparación de superficie, reparación de detalles y terminación profesional.',
+      location: 'Buenos Aires',
+      year: '2025',
+      featured: true,
+      images: [
+        'https://images.unsplash.com/photo-1605989287045-4bb5808fe1f4',
+        'https://images.unsplash.com/photo-1562259949-e8e7689d7828',
+        'https://images.unsplash.com/photo-1589939705384-5185137a7f0f',
+      ],
     },
     {
-      image: 'https://images.unsplash.com/photo-1509942999-ddab40caad8f',
+      id: 2,
       category: 'Remodelación',
-      title: 'Remodelación de Oficinas Modernas'
+      title: 'Remodelación de oficinas modernas',
+      description:
+        'Renovación de espacios de trabajo con terminaciones modernas, iluminación cuidada y distribución funcional.',
+      location: 'CABA',
+      year: '2025',
+      featured: false,
+      images: [
+        'https://images.unsplash.com/photo-1509942999-ddab40caad8f',
+        'https://images.unsplash.com/photo-1600607688969-a5bfcd646154',
+        'https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea',
+      ],
     },
     {
-      image: 'https://images.unsplash.com/photo-1671681740312-1b59af2eb0e7',
+      id: 3,
       category: 'Impermeabilización',
-      title: 'Sistema de Impermeabilización de Terraza'
+      title: 'Impermeabilización de terraza',
+      description:
+        'Aplicación de sistema impermeabilizante para prevenir filtraciones y proteger la estructura del inmueble.',
+      location: 'Buenos Aires',
+      year: '2024',
+      featured: false,
+      images: [
+        'https://images.unsplash.com/photo-1671681740312-1b59af2eb0e7',
+        'https://images.unsplash.com/photo-1581094794329-c8112a89af12',
+        'https://images.unsplash.com/photo-1621905252507-b35492cc74b4',
+      ],
     },
     {
-      image: 'https://images.unsplash.com/photo-1595937146232-e4e496429fea',
+      id: 4,
       category: 'Pisos',
-      title: 'Instalación de Pisos de Madera'
+      title: 'Instalación de pisos',
+      description:
+        'Colocación y renovación de pisos con acabados prolijos, nivelación y detalles cuidados.',
+      location: 'Zona Norte',
+      year: '2024',
+      featured: false,
+      images: [
+        'https://images.unsplash.com/photo-1595937146232-e4e496429fea',
+        'https://images.unsplash.com/photo-1581858726788-75bc0f6a952d',
+        'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3',
+      ],
     },
     {
-      image: 'https://images.unsplash.com/photo-1673300982703-be76f17b5c92',
+      id: 5,
       category: 'Altura',
-      title: 'Trabajos en Altura - Edificio Corporativo'
+      title: 'Trabajo en altura corporativo',
+      description:
+        'Intervención en altura para mantenimiento y reparación exterior con equipamiento adecuado.',
+      location: 'CABA',
+      year: '2025',
+      featured: false,
+      images: [
+        'https://images.unsplash.com/photo-1673300982703-be76f17b5c92',
+        'https://images.unsplash.com/photo-1503387762-592deb58ef4e',
+        'https://images.unsplash.com/photo-1504307651254-35680f356dfd',
+      ],
     },
     {
-      image: 'https://images.unsplash.com/photo-1571680009459-42cf3eb79e15',
+      id: 6,
       category: 'Mantenimiento',
-      title: 'Mantenimiento Integral de Edificio'
-    }
+      title: 'Mantenimiento integral edilicio',
+      description:
+        'Mantenimiento preventivo y correctivo para espacios comunes, edificios y propiedades.',
+      location: 'Buenos Aires',
+      year: '2024',
+      featured: false,
+      images: [
+        'https://images.unsplash.com/photo-1571680009459-42cf3eb79e15',
+        'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789',
+        'https://images.unsplash.com/photo-1621905252507-b35492cc74b4',
+      ],
+    },
   ];
-
+  
   const testimonials = [
     {
       name: 'María Fernández',

@@ -43,10 +43,6 @@ function ServicesSection({ services }) {
                     transition={{ duration: 0.6 }}
                     className="mb-16 max-w-3xl"
                 >
-                    <span className="inline-flex items-center rounded-full border border-primary/30 bg-primary/10 px-4 py-2 text-sm font-medium text-primary mb-5">
-                        Servicios profesionales
-                    </span>
-
                     <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight">
                         Soluciones para renovar, reparar y mantener tu espacio
                     </h2>
