@@ -116,26 +116,64 @@ function ServicesSection({ services }) {
                     </div>
 
                 {/* MOBILE */}
-                    <div className="lg:hidden">
-                        <div className="flex gap-3 overflow-x-auto pb-4">
-                            {services.map((service, index) => {
-                                const isActive = index === activeIndex;
+                    <div className="lg:hidden space-y-3">
+                        {services.map((service, index) => {
+                            const Icon = service.icon;
+                            const isActive = index === activeIndex;
 
-                                return (
-                                    <button
-                                        key={service.title}
-                                        onClick={() => setActiveIndex(index)}
-                                        className={`whitespace-nowrap rounded-full px-5 py-3 text-sm font-medium transition-all duration-300 border ${
+                            return (
+                                <button
+                                    key={service.title}
+                                    onClick={() => setActiveIndex(index)}
+                                    className={`group relative flex w-full items-center gap-4 overflow-hidden rounded-2xl border p-4 text-left transition-all duration-300 ${
+                                        isActive
+                                            ? 'border-primary bg-primary/10 shadow-lg shadow-primary/10'
+                                            : 'border-border bg-card/50'
+                                    }`}
+                                >
+                                    <div
+                                        className={`flex h-11 w-11 items-center justify-center rounded-xl transition-all duration-300 ${
                                             isActive
-                                                ? 'bg-primary text-background border-primary shadow-lg shadow-primary/20'
-                                                : 'bg-card border-border text-foreground/70'
+                                                ? 'bg-primary text-background'
+                                                : 'bg-primary/10 text-primary'
                                         }`}
                                     >
-                                        {service.title}
-                                    </button>
-                                );
-                            })}
-                        </div>
+                                        <Icon size={22} />
+                                    </div>
+
+                                    <div className="flex-1 overflow-hidden">
+                                        <div className="flex items-center justify-between gap-3">
+                                            <h3
+                                                className={`truncate text-sm font-semibold transition-colors duration-300 ${
+                                                    isActive
+                                                        ? 'text-foreground'
+                                                        : 'text-foreground/80'
+                                                }`}
+                                            >
+                                                {service.title}
+                                            </h3>
+
+                                            <span
+                                                className={`text-xs font-semibold ${
+                                                    isActive
+                                                        ? 'text-primary'
+                                                        : 'text-foreground/40'
+                                                }`}
+                                            >
+                                                {String(index + 1).padStart(2, '0')}
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    {isActive && (
+                                        <motion.div
+                                            layoutId="mobile-active-service"
+                                            className="absolute bottom-0 left-0 h-[2px] w-full bg-primary"
+                                        />
+                                    )}
+                                </button>
+                            );
+                        })}
                     </div>
 
                 {/* CARD GRANDE */}
@@ -225,10 +263,13 @@ function ServicesSection({ services }) {
                                     </div>
                                 </div>
 
-                                <div className="mt-10">
+                                <div className="mt-10 flex justify-center lg:justify-start">
                                     <Button className="group bg-primary text-background hover:bg-primary/90 px-7 py-6 rounded-xl font-semibold">
                                         Consultar este servicio
-                                        <ArrowRight size={18} className="ml-2 transition-transform group-hover:translate-x-1" />
+                                        <ArrowRight
+                                            size={18}
+                                            className="ml-2 transition-transform group-hover:translate-x-1"
+                                        />
                                     </Button>
                                 </div>
                             </motion.div>
