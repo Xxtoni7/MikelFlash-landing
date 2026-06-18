@@ -1,14 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
-import {
-  Paintbrush,
-  Building2,
-  Droplets,
-  Hammer,
-  Home,
-  Wrench,
-} from 'lucide-react';
-
+import { Paintbrush, Building2, Droplets, Hammer, Home, Wrench } from 'lucide-react';
 import Header from '@/components/Header.jsx';
 import Footer from '@/components/Footer.jsx';
 import HeroSection from '@/components/sections/HeroSection.jsx';
@@ -31,69 +23,57 @@ function HomePage() {
       title: 'Pintura Interior/Exterior',
       description:
         'Renovamos interiores, frentes, medianeras y espacios comunes con terminaciones prolijas y materiales de calidad.',
-      images: [
-        'https://images.unsplash.com/photo-1562259949-e8e7689d7828',
-        'https://images.unsplash.com/photo-1589939705384-5185137a7f0f',
-        'https://images.unsplash.com/photo-1595814433015-e6f5ce69614e',
-      ],
+      image: '/servicios/pintura.webp',
+      imagePosition: 'center 48%',
     },
     {
       icon: Building2,
       title: 'Trabajos en Altura',
       description:
         'Realizamos trabajos en frentes, contrafrentes y medianeras con equipamiento adecuado y personal capacitado.',
-      images: [
-        'https://images.unsplash.com/photo-1503387762-592deb58ef4e',
-        'https://images.unsplash.com/photo-1590496793929-36417d3117de',
-        'https://images.unsplash.com/photo-1504307651254-35680f356dfd',
-      ],
+      image: '/servicios/trabajo-altura.webp',
+      imagePosition: 'center 45%',
     },
     {
       icon: Droplets,
       title: 'Impermeabilización',
       description:
         'Soluciones para terrazas, techos y filtraciones, cuidando cada detalle para proteger tu propiedad.',
-      images: [
-        'https://images.unsplash.com/photo-1581094794329-c8112a89af12',
-        'https://images.unsplash.com/photo-1621905252507-b35492cc74b4',
-        'https://images.unsplash.com/photo-1590959651373-a3db0f38a961',
-      ],
+      image: '/servicios/impermeabilizacion.webp',
+      imageFit: 'cover',
+      imagePosition: 'center 38%',
     },
     {
       icon: Hammer,
       title: 'Refacciones de Pisos',
       description:
         'Instalación, reparación y renovación de pisos, zócalos y revestimientos con acabados prolijos.',
-      images: [
-        'https://images.unsplash.com/photo-1581858726788-75bc0f6a952d',
-        'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3',
-        'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c',
-      ],
+      image: '/servicios/pisos.webp',
+      imageFit: 'cover',
+      imagePosition: 'center 58%',
     },
     {
       icon: Home,
       title: 'Remodelaciones',
       description:
         'Transformamos espacios completos para hogares, locales y oficinas con una ejecución ordenada y profesional.',
-      images: [
-        'https://images.unsplash.com/photo-1600585154340-be6161a56a0c',
-        'https://images.unsplash.com/photo-1600607688969-a5bfcd646154',
-        'https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea',
-      ],
+      image: '/servicios/remodelaciones.webp',
+      imageMobileBackdrop: true,
+      imageMobileScale: 1.45,
+      imagePosition: 'center 48%',
     },
     {
       icon: Wrench,
       title: 'Mantenimiento Edilicio',
       description:
         'Mantenimiento preventivo y correctivo para edificios, propiedades, comercios y espacios comunes.',
-      images: [
-        'https://images.unsplash.com/photo-1503387762-592deb58ef4e',
-        'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789',
-        'https://images.unsplash.com/photo-1621905252507-b35492cc74b4',
-      ],
+      image: '/servicios/mantenimiento.webp',
+      imageFit: 'contain',
+      imageMobileBackdrop: true,
+      imagePosition: 'center center',
     },
   ];
-
+  
   const portfolioItems = [
     {
       id: 1,
@@ -105,9 +85,9 @@ function HomePage() {
       year: '2025',
       featured: true,
       images: [
-        'https://images.unsplash.com/photo-1605989287045-4bb5808fe1f4',
-        'https://images.unsplash.com/photo-1562259949-e8e7689d7828',
-        'https://images.unsplash.com/photo-1589939705384-5185137a7f0f',
+        '/trabajos/nuvola/T2COMPLETO1.jpeg',
+        '/trabajos/nuvola/T2F2.jpeg',
+        '/trabajos/nuvola/T2F1.jpeg',
       ],
     },
     {

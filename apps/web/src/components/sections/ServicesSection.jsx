@@ -1,30 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 function ServicesSection({ services, onServiceContact }) {
     const [activeIndex, setActiveIndex] = useState(0);
-    const [currentImageIndex, setCurrentImageIndex] = useState(0);
     const activeService = services[activeIndex];
     const ActiveIcon = activeService.icon;
-
-    useEffect(() => {
-        setCurrentImageIndex(0);
-    }, [activeIndex]);
-
-    const nextImage = () => {
-        setCurrentImageIndex((prev) =>
-            prev === activeService.images.length - 1 ? 0 : prev + 1
-        );
-    };
-
-    const prevImage = () => {
-        setCurrentImageIndex((prev) =>
-            prev === 0 ? activeService.images.length - 1 : prev - 1
-        );
-    };
+    const hasDesktopBackdrop = activeService.imageFit !== 'cover';
+    const hasMobileBackdrop = Boolean(activeService.imageMobileBackdrop);
 
     return (
         <section
@@ -206,56 +191,71 @@ function ServicesSection({ services, onServiceContact }) {
                                         {activeService.description}
                                     </p>
 
-                                {/* GALERÍA */}
+                                {/* IMAGEN */}
                                     <div className="mt-8 relative overflow-hidden rounded-2xl border border-primary/20 bg-background/30 shadow-xl shadow-black/20">
                                         <AnimatePresence mode="wait">
-                                            <motion.img
-                                                key={activeService.images[currentImageIndex]}
-                                                src={activeService.images[currentImageIndex]}
-                                                alt={activeService.title}
+                                            <motion.div
+                                                key={activeService.image}
                                                 initial={{ opacity: 0, scale: 1.05 }}
                                                 animate={{ opacity: 1, scale: 1 }}
                                                 exit={{ opacity: 0 }}
                                                 transition={{ duration: 0.35 }}
-                                                className="h-64 w-full object-cover"
-                                            />
+                                                className="relative h-72 w-full sm:h-80 lg:h-72 xl:h-80"
+                                            >
+                                                <img
+                                                    src={activeService.image}
+                                                    alt=""
+                                                    aria-hidden="true"
+                                                    className={`absolute inset-0 h-full w-full scale-110 object-cover opacity-35 blur-md ${
+                                                        hasMobileBackdrop ? 'block' : 'hidden'
+                                                    } ${
+                                                        hasDesktopBackdrop ? 'lg:block' : 'lg:hidden'
+                                                    }`}
+                                                    style={{
+                                                        objectPosition:
+                                                            activeService.imagePosition || 'center center',
+                                                    }}
+                                                />
+
+                                                <div
+                                                    className={`absolute inset-0 bg-black/45 ${
+                                                        hasMobileBackdrop ? 'block' : 'hidden'
+                                                    } ${
+                                                        hasDesktopBackdrop ? 'lg:block' : 'lg:hidden'
+                                                    }`}
+                                                />
+
+                                                <img
+                                                    src={activeService.image}
+                                                    alt={activeService.title}
+                                                    className="relative z-10 h-full w-full lg:hidden"
+                                                    style={{
+                                                        objectFit: hasMobileBackdrop
+                                                            ? 'contain'
+                                                            : activeService.imageFit || 'cover',
+                                                        objectPosition:
+                                                            activeService.imagePosition || 'center center',
+                                                        transform: activeService.imageMobileScale
+                                                            ? `scale(${activeService.imageMobileScale})`
+                                                            : undefined,
+                                                    }}
+                                                />
+
+                                                <img
+                                                    src={activeService.image}
+                                                    alt={activeService.title}
+                                                    className={`relative z-10 hidden h-full w-full lg:block ${
+                                                        hasDesktopBackdrop ? 'object-contain' : 'object-cover'
+                                                    }`}
+                                                    style={{
+                                                        objectPosition:
+                                                            activeService.imagePosition || 'center center',
+                                                    }}
+                                                />
+                                            </motion.div>
                                         </AnimatePresence>
 
                                         <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
-
-                                        {/* BOTONES */}
-                                        {activeService.images.length > 1 && (
-                                            <>
-                                                <button
-                                                    onClick={prevImage}
-                                                    className="absolute left-4 top-1/2 -translate-y-1/2 flex h-11 w-11 items-center justify-center rounded-full bg-black/40 backdrop-blur-md text-white hover:bg-primary transition-all duration-300"
-                                                >
-                                                    <ChevronLeft size={20} />
-                                                </button>
-
-                                                <button
-                                                    onClick={nextImage}
-                                                    className="absolute right-4 top-1/2 -translate-y-1/2 flex h-11 w-11 items-center justify-center rounded-full bg-black/40 backdrop-blur-md text-white hover:bg-primary transition-all duration-300"
-                                                >
-                                                    <ChevronRight size={20} />
-                                                </button>
-                                            </>
-                                        )}
-
-                                        {/* INDICADORES */}
-                                        <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 gap-2">
-                                            {activeService.images.map((image, index) => (
-                                                <button
-                                                    key={`${activeService.title}-${image}`}
-                                                    onClick={() => setCurrentImageIndex(index)}
-                                                    className={`h-2 rounded-full transition-all duration-300 ${
-                                                        index === currentImageIndex
-                                                            ? 'w-8 bg-primary'
-                                                            : 'w-2 bg-white/50'
-                                                    }`}
-                                                />
-                                            ))}
-                                        </div>
                                     </div>
                                 </div>
 
@@ -286,7 +286,11 @@ ServicesSection.propTypes = {
             title: PropTypes.string.isRequired,
             icon: PropTypes.elementType.isRequired,
             description: PropTypes.string.isRequired,
-            images: PropTypes.arrayOf(PropTypes.string).isRequired,
+            image: PropTypes.string.isRequired,
+            imageFit: PropTypes.oneOf(['cover', 'contain']),
+            imageMobileBackdrop: PropTypes.bool,
+            imageMobileScale: PropTypes.number,
+            imagePosition: PropTypes.string,
         })
     ).isRequired,
     onServiceContact: PropTypes.func.isRequired,
