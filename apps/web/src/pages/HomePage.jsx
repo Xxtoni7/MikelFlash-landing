@@ -77,7 +77,6 @@ function HomePage() {
   const portfolioItems = [
     {
       id: 1,
-      category: 'Pintura exterior',
       title: 'Renovación de fachada comercial',
       description:
         'Trabajo de pintura exterior en frente comercial, incluyendo preparación de superficie, reparación de sectores deteriorados y terminación final en color institucional.',
@@ -94,7 +93,6 @@ function HomePage() {
     },
     {
       id: 2,
-      category: 'Impermeabilización',
       title: 'Impermeabilización y pintura en altura',
       description:
         'Trabajo con silleta en pulmón interno de edificio, incluyendo reparación de sectores afectados, sellado, impermeabilización y pintura exterior.',
@@ -113,7 +111,6 @@ function HomePage() {
     },
     {
       id: 3,
-      category: 'Mantenimiento Edilicio',
       title: 'Mantenimiento y pintura de pulmón de edificio',
       description:
         'Trabajo de mantenimiento en pulmón interno, incluyendo reparación de paredes exteriores, preparación de superficies y aplicación de pintura final.',
@@ -132,7 +129,6 @@ function HomePage() {
     },
     {
       id: 4,
-      category: 'Mantenimiento Edilicio',
       title: 'Reparación de balcones y tratamiento de humedad',
       description:
         'Trabajo de reparación en balcones afectados por humedad, incluyendo tratamiento de superficie, sellado, mampostería y pintura exterior.',
@@ -150,7 +146,6 @@ function HomePage() {
     },
     {
       id: 5,
-      category: 'Refacciones de Pisos',
       title: 'Reparación y pulido de piso de parquet',
       description:
         'Trabajo de reparación de piso de parquet, incluyendo reposición de piezas, pulido general y aplicación de terminación protectora.',
@@ -168,7 +163,6 @@ function HomePage() {
     },
     {
       id: 6,
-      category: 'Trabajos en Altura',
       title: 'Pintura exterior y mantenimiento en altura',
       description:
         'Trabajo con silleta en sectores altos de fachada, incluyendo preparación de superficie, mantenimiento exterior y aplicación de pintura.',

@@ -73,7 +73,6 @@ PortfolioCard.propTypes = {
         images: PropTypes.arrayOf(PropTypes.string).isRequired,
         coverImage: PropTypes.string,
         coverPosition: PropTypes.string,
-        category: PropTypes.string.isRequired,
         title: PropTypes.string.isRequired,
         description: PropTypes.string.isRequired,
         location: PropTypes.string.isRequired,
