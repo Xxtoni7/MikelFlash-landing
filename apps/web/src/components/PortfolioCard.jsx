@@ -16,7 +16,7 @@ function PortfolioCard({ project, onOpen, delay = 0, isMobileActive = false }) {
             whileHover={{ y: -8 }}
             className={`group relative h-[300px] w-full overflow-hidden rounded-[1.75rem] border border-white/10 bg-card text-left shadow-2xl shadow-black/30 transition-colors duration-300 hover:border-primary/60 hover:shadow-primary/10 sm:h-[340px] lg:h-[360px] lg:rounded-[2rem] ${
                 isMobileActive
-                    ? 'border-primary/35 shadow-primary/5 md:border-white/10 md:shadow-black/30'
+                    ? 'border-primary shadow-[0_0_0_1px_rgba(255,215,0,0.45),0_0_22px_rgba(255,215,0,0.22)] md:border-white/10 md:shadow-black/30'
                     : ''
             }`}
         >
@@ -40,13 +40,21 @@ function PortfolioCard({ project, onOpen, delay = 0, isMobileActive = false }) {
             />
             <div
                 className={`absolute inset-0 transition-opacity duration-500 md:group-hover:opacity-30 bg-[radial-gradient(circle_at_70%_20%,rgba(255,215,0,0.24),transparent_42%)] ${
-                    isMobileActive ? 'opacity-10 md:opacity-0' : 'opacity-0'
+                    isMobileActive ? 'opacity-25 md:opacity-0' : 'opacity-0'
                 }`}
             />
 
             <div
+                className={`pointer-events-none absolute inset-0 z-20 rounded-[inherit] transition-opacity duration-300 md:hidden ${
+                    isMobileActive ? 'opacity-100' : 'opacity-0'
+                }`}
+            >
+                <div className="absolute inset-0 rounded-[inherit] border-2 border-primary/90 shadow-[inset_0_0_0_1px_rgba(255,215,0,0.45),0_0_24px_rgba(255,215,0,0.35)]" />
+            </div>
+
+            <div
                 className={`absolute right-4 top-4 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white backdrop-blur-sm transition-colors duration-300 md:backdrop-blur-md md:group-hover:bg-primary md:group-hover:text-background sm:right-5 sm:top-5 sm:h-12 sm:w-12 ${
-                    isMobileActive ? 'bg-primary/65 text-background md:bg-white/10 md:text-white' : ''
+                    isMobileActive ? 'bg-primary text-background shadow-[0_0_16px_rgba(255,215,0,0.35)] md:bg-white/10 md:text-white md:shadow-none' : ''
                 }`}
             >
                 <ArrowUpRight size={21} />
