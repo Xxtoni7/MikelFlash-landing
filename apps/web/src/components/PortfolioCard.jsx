@@ -14,9 +14,9 @@ function PortfolioCard({ project, onOpen, delay = 0, isMobileActive = false }) {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.32, delay, ease: 'easeOut' }}
             whileHover={{ y: -8 }}
-            className={`group relative h-[300px] w-full overflow-hidden rounded-[1.75rem] border border-white/10 bg-card text-left shadow-2xl shadow-black/30 transition-all duration-300 hover:border-primary/60 hover:shadow-primary/10 sm:h-[340px] lg:h-[360px] lg:rounded-[2rem] ${
+            className={`group relative h-[300px] w-full overflow-hidden rounded-[1.75rem] border border-white/10 bg-card text-left shadow-2xl shadow-black/30 transition-colors duration-300 hover:border-primary/60 hover:shadow-primary/10 sm:h-[340px] lg:h-[360px] lg:rounded-[2rem] ${
                 isMobileActive
-                    ? 'border-primary/40 shadow-primary/10 md:border-white/10 md:shadow-black/30'
+                    ? 'border-primary/35 shadow-primary/5 md:border-white/10 md:shadow-black/30'
                     : ''
             }`}
         >
@@ -25,8 +25,8 @@ function PortfolioCard({ project, onOpen, delay = 0, isMobileActive = false }) {
                 alt={project.title}
                 loading="lazy"
                 decoding="async"
-                className={`absolute inset-0 h-full w-full object-cover transition-all duration-700 group-hover:scale-110 ${
-                    isMobileActive ? 'brightness-110 md:brightness-100' : ''
+                className={`absolute inset-0 h-full w-full object-cover transition-transform duration-700 md:group-hover:scale-110 ${
+                    isMobileActive ? 'md:brightness-100' : ''
                 }`}
                 style={{
                     objectPosition: project.coverPosition || 'center center',
@@ -35,18 +35,18 @@ function PortfolioCard({ project, onOpen, delay = 0, isMobileActive = false }) {
 
             <div
                 className={`absolute inset-0 bg-gradient-to-t from-black/95 via-black/45 to-black/10 transition-opacity duration-300 ${
-                    isMobileActive ? 'opacity-90 md:opacity-100' : 'opacity-100'
+                    isMobileActive ? 'opacity-95 md:opacity-100' : 'opacity-100'
                 }`}
             />
             <div
-                className={`absolute inset-0 transition-opacity duration-500 group-hover:opacity-30 bg-[radial-gradient(circle_at_70%_20%,rgba(255,215,0,0.24),transparent_42%)] ${
-                    isMobileActive ? 'opacity-15 md:opacity-0' : 'opacity-0'
+                className={`absolute inset-0 transition-opacity duration-500 md:group-hover:opacity-30 bg-[radial-gradient(circle_at_70%_20%,rgba(255,215,0,0.24),transparent_42%)] ${
+                    isMobileActive ? 'opacity-10 md:opacity-0' : 'opacity-0'
                 }`}
             />
 
             <div
-                className={`absolute right-4 top-4 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white backdrop-blur-md transition-all duration-300 group-hover:bg-primary group-hover:text-background sm:right-5 sm:top-5 sm:h-12 sm:w-12 ${
-                    isMobileActive ? 'bg-primary/80 text-background md:bg-white/10 md:text-white' : ''
+                className={`absolute right-4 top-4 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white backdrop-blur-sm transition-colors duration-300 md:backdrop-blur-md md:group-hover:bg-primary md:group-hover:text-background sm:right-5 sm:top-5 sm:h-12 sm:w-12 ${
+                    isMobileActive ? 'bg-primary/65 text-background md:bg-white/10 md:text-white' : ''
                 }`}
             >
                 <ArrowUpRight size={21} />

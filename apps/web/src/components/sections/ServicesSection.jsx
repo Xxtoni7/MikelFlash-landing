@@ -17,7 +17,7 @@ function ServicesSection({ services, onServiceContact }) {
             className="relative overflow-hidden py-24 bg-gradient-to-b from-card/30 via-background to-card/20"
         >
             <div className="absolute inset-0 opacity-10">
-                <div className="absolute left-1/2 top-1/2 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary blur-[160px]" />
+                <div className="absolute left-1/2 top-1/2 h-[320px] w-[320px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary blur-[90px] lg:h-[600px] lg:w-[600px] lg:blur-[160px]" />
             </div>
 
             <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -106,7 +106,7 @@ function ServicesSection({ services, onServiceContact }) {
                                 <button
                                     key={service.title}
                                     onClick={() => setActiveIndex(index)}
-                                    className={`group relative flex w-full items-center gap-4 overflow-hidden rounded-2xl border p-4 text-left transition-all duration-300 ${
+                                    className={`group relative flex w-full items-center gap-4 overflow-hidden rounded-2xl border p-4 text-left transition-colors duration-300 ${
                                         isActive
                                             ? 'border-primary bg-primary/10 shadow-lg shadow-primary/10'
                                             : 'border-border bg-card/50'
@@ -160,8 +160,8 @@ function ServicesSection({ services, onServiceContact }) {
                 {/* CARD GRANDE */}
                     <div className="relative min-h-[620px] overflow-hidden rounded-[2rem] border border-primary/20 bg-card/70 p-8 md:p-10 shadow-2xl shadow-black/20 lg:col-start-2">
                         <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(255,215,0,0.20),transparent_35%)]" />
-                        <div className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-primary/20 blur-3xl" />
-                        <div className="absolute -bottom-24 -left-24 h-72 w-72 rounded-full bg-primary/10 blur-3xl" />
+                        <div className="absolute -right-20 -top-20 h-48 w-48 rounded-full bg-primary/15 blur-2xl lg:h-64 lg:w-64 lg:bg-primary/20 lg:blur-3xl" />
+                        <div className="absolute -bottom-24 -left-24 h-56 w-56 rounded-full bg-primary/10 blur-2xl lg:h-72 lg:w-72 lg:blur-3xl" />
 
                         <AnimatePresence mode="wait">
                             <motion.div
@@ -206,7 +206,9 @@ function ServicesSection({ services, onServiceContact }) {
                                                     src={activeService.image}
                                                     alt=""
                                                     aria-hidden="true"
-                                                    className={`absolute inset-0 h-full w-full scale-110 object-cover opacity-35 blur-md ${
+                                                loading="lazy"
+                                                decoding="async"
+                                                className={`absolute inset-0 h-full w-full scale-105 object-cover opacity-25 blur-sm lg:scale-110 lg:opacity-35 lg:blur-md ${
                                                         hasMobileBackdrop ? 'block' : 'hidden'
                                                     } ${
                                                         hasDesktopBackdrop ? 'lg:block' : 'lg:hidden'
@@ -218,7 +220,7 @@ function ServicesSection({ services, onServiceContact }) {
                                                 />
 
                                                 <div
-                                                    className={`absolute inset-0 bg-black/45 ${
+                                                    className={`absolute inset-0 bg-black/30 lg:bg-black/45 ${
                                                         hasMobileBackdrop ? 'block' : 'hidden'
                                                     } ${
                                                         hasDesktopBackdrop ? 'lg:block' : 'lg:hidden'
@@ -228,6 +230,8 @@ function ServicesSection({ services, onServiceContact }) {
                                                 <img
                                                     src={activeService.image}
                                                     alt={activeService.title}
+                                                    loading="lazy"
+                                                    decoding="async"
                                                     className="relative z-10 h-full w-full lg:hidden"
                                                     style={{
                                                         objectFit: hasMobileBackdrop
@@ -244,6 +248,8 @@ function ServicesSection({ services, onServiceContact }) {
                                                 <img
                                                     src={activeService.image}
                                                     alt={activeService.title}
+                                                    loading="lazy"
+                                                    decoding="async"
                                                     className={`relative z-10 hidden h-full w-full lg:block ${
                                                         hasDesktopBackdrop ? 'object-contain' : 'object-cover'
                                                     }`}

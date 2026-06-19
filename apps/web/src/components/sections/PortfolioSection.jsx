@@ -25,37 +25,48 @@ function PortfolioSection({ portfolioItems, scrollToContact }) {
 
     useEffect(() => {
         const mediaQuery = globalThis.matchMedia('(max-width: 767px)');
+        let frameId = null;
 
         const updateActiveCard = () => {
-            if (!mediaQuery.matches) {
-                setActiveMobileProjectId(null);
-                return;
-            }
+            if (frameId) return;
 
-            const viewportCenter = window.innerHeight / 2;
-            let closestCard = null;
+            frameId = requestAnimationFrame(() => {
+                frameId = null;
 
-            cardRefs.current.forEach((node, id) => {
-                const rect = node.getBoundingClientRect();
-                const visibleHeight = Math.min(rect.bottom, window.innerHeight) - Math.max(rect.top, 0);
-
-                if (visibleHeight <= 0) return;
-
-                const cardCenter = rect.top + rect.height / 2;
-                const visibility = visibleHeight / Math.max(rect.height, 1);
-                const score = Math.abs(cardCenter - viewportCenter) - visibility * 80;
-
-                if (!closestCard || score < closestCard.score) {
-                    closestCard = { id, score };
+                if (!mediaQuery.matches) {
+                    setActiveMobileProjectId(null);
+                    return;
                 }
-            });
 
-            setActiveMobileProjectId(closestCard?.id || null);
+                const viewportCenter = window.innerHeight / 2;
+                let closestCard = null;
+
+                cardRefs.current.forEach((node, id) => {
+                    const rect = node.getBoundingClientRect();
+                    const visibleHeight = Math.min(rect.bottom, window.innerHeight) - Math.max(rect.top, 0);
+
+                    if (visibleHeight <= 0) return;
+
+                    const cardCenter = rect.top + rect.height / 2;
+                    const visibility = visibleHeight / Math.max(rect.height, 1);
+                    const score = Math.abs(cardCenter - viewportCenter) - visibility * 80;
+
+                    if (!closestCard || score < closestCard.score) {
+                        closestCard = { id, score };
+                    }
+                });
+
+                const nextId = closestCard?.id || null;
+
+                setActiveMobileProjectId((currentId) =>
+                    currentId === nextId ? currentId : nextId
+                );
+            });
         };
 
         const observer = new IntersectionObserver(updateActiveCard, {
-            threshold: [0, 0.25, 0.5, 0.75, 1],
-            rootMargin: '-20% 0px -20% 0px',
+            threshold: [0.35, 0.65],
+            rootMargin: '-28% 0px -28% 0px',
         });
 
         visibleProjects.forEach((project) => {
@@ -71,6 +82,10 @@ function PortfolioSection({ portfolioItems, scrollToContact }) {
         mediaQuery.addEventListener('change', updateActiveCard);
 
         return () => {
+            if (frameId) {
+                cancelAnimationFrame(frameId);
+            }
+
             observer.disconnect();
             window.removeEventListener('resize', updateActiveCard);
             mediaQuery.removeEventListener('change', updateActiveCard);
@@ -128,8 +143,8 @@ function PortfolioSection({ portfolioItems, scrollToContact }) {
         >
             <div className="absolute inset-0 opacity-[0.08] bg-[linear-gradient(to_right,rgba(255,255,255,0.12)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.12)_1px,transparent_1px)] bg-[size:70px_70px]" />
 
-            <div className="absolute left-[-160px] top-24 h-[420px] w-[420px] rounded-full bg-primary/20 blur-[150px]" />
-            <div className="absolute right-[-180px] bottom-20 h-[480px] w-[480px] rounded-full bg-primary/15 blur-[160px]" />
+            <div className="absolute left-[-120px] top-24 h-[260px] w-[260px] rounded-full bg-primary/15 blur-[80px] lg:left-[-160px] lg:h-[420px] lg:w-[420px] lg:bg-primary/20 lg:blur-[150px]" />
+            <div className="absolute right-[-130px] bottom-20 h-[300px] w-[300px] rounded-full bg-primary/10 blur-[90px] lg:right-[-180px] lg:h-[480px] lg:w-[480px] lg:bg-primary/15 lg:blur-[160px]" />
 
             <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <motion.div
