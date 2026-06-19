@@ -52,7 +52,7 @@ function Footer() {
             </div>
 
             <p className="text-foreground/70 leading-relaxed">
-              Transformamos espacios con excelencia y profesionalismo desde hace más de 10 años.
+              Transformamos espacios con excelencia y profesionalismo desde hace más de 5 años.
             </p>
           </div>
 
