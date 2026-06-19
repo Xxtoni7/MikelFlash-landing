@@ -29,7 +29,7 @@ function ServicesSection({ services, onServiceContact }) {
                     className="mb-16 max-w-3xl"
                 >
                     <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight">
-                        Soluciones para renovar, reparar y mantener tu espacio
+                        Refacciones y mantenimiento
                     </h2>
 
                     <p className="mt-5 text-lg text-foreground/70 leading-relaxed">
