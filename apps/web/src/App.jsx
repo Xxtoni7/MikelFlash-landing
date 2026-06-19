@@ -1,14 +1,12 @@
 import React from 'react';
-import { Toaster } from '@/components/ui/sonner';
-import HomePage from './pages/HomePage.jsx';
+
+import HomePage from '@/pages/HomePage.jsx';
+import PrivacyPolicyPage from '@/pages/PrivacyPolicyPage.jsx';
 
 function App() {
-  return (
-    <>
-      <HomePage />
-      <Toaster />
-    </>
-  );
+    const isPrivacyPolicyPage = globalThis.location.pathname === '/politica-de-privacidad';
+
+    return isPrivacyPolicyPage ? <PrivacyPolicyPage /> : <HomePage />;
 }
 
 export default App;
