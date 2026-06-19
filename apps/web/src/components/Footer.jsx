@@ -1,5 +1,5 @@
 import React from 'react';
-import { Facebook, Instagram, Mail, Phone, MapPin } from 'lucide-react';
+import { Mail, Phone, MapPin } from 'lucide-react';
 
 function Footer() {
   const currentYear = new Date().getFullYear();
@@ -10,11 +10,6 @@ function Footer() {
     { name: 'Servicios', href: '#servicios' },
     { name: 'Trabajos', href: '#trabajos' },
     { name: 'Contacto', href: '#contacto' }
-  ];
-
-  const socialLinks = [
-    { icon: Facebook, href: '#', label: 'Facebook' },
-    { icon: Instagram, href: '#', label: 'Instagram' },
   ];
 
   const scrollToSection = (e, href) => {
@@ -38,12 +33,18 @@ function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           <div>
             <div className="flex items-center space-x-2 mb-4">
-              <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
-                <span className="text-background font-bold text-xl">MF</span>
-              </div>
-              <span className="text-xl font-bold">
-                Mikel <span className="text-primary">Flash</span>
-              </span>
+              <a href="#hero" onClick={(e) => scrollToSection(e, '#hero')} className="flex items-center space-x-2">
+                <div className="w-12 h-10 rounded-xl overflow-hidden border border-primary/30 shadow-lg shadow-primary/20 bg-black/20 backdrop-blur-sm">
+                  <img
+                    src="/logo/MF.png"
+                    alt="Mikel Flash"
+                    className="w-full h-full object-cover"
+                  />
+                </div>  
+                <span className="text-xl font-bold text-foreground">
+                  Mikel <span className="text-primary">Flash</span>
+                </span>
+              </a>
             </div>
             <p className="text-foreground/70 leading-relaxed">
               Transformamos espacios con excelencia y profesionalismo desde hace más de 10 años.
@@ -72,11 +73,11 @@ function Footer() {
             <div className="space-y-3">
               <div className="flex items-center space-x-3 text-foreground/70">
                 <Phone size={18} className="text-primary" />
-                <span>+54 11 1234-5678</span>
+                <span>+54 11 3586-2514</span>
               </div>
               <div className="flex items-center space-x-3 text-foreground/70">
                 <Mail size={18} className="text-primary" />
-                <span>info@mikelflash.com</span>
+                <span>ort.ortega.refacciones@gmail.com</span>
               </div>
               <div className="flex items-center space-x-3 text-foreground/70">
                 <MapPin size={18} className="text-primary" />
@@ -90,18 +91,6 @@ function Footer() {
           <p className="text-foreground/60 text-sm">
             © {currentYear} Mikel Flash. Todos los derechos reservados.
           </p>
-          <div className="flex items-center space-x-4 mt-4 md:mt-0">
-            {socialLinks.map((social) => (
-              <a
-                key={social.label}
-                href={social.href}
-                aria-label={social.label}
-                className="w-10 h-10 rounded-lg bg-muted hover:bg-primary transition-all duration-300 flex items-center justify-center group"
-              >
-                <social.icon size={20} className="text-foreground/70 group-hover:text-background transition-colors duration-300" />
-              </a>
-            ))}
-          </div>
         </div>
       </div>
     </footer>

@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { motion } from 'framer-motion';
-import { Phone, Mail, MapPin, Clock, MessageCircle } from 'lucide-react';
-
+import { Mail, MapPin, Clock } from 'lucide-react';
+import WhatsAppIcon from '@/components/icons/WhatsAppIcon.jsx';
 import ContactForm from '@/components/ContactForm.jsx';
 
 function ContactSection({ selectedService }) {
@@ -32,14 +32,20 @@ function ContactSection({ selectedService }) {
                     </p>
                 </motion.div>
 
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:items-stretch">
                     <motion.div
                         initial={{ opacity: 0, x: -50 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.8 }}
-                        className="bg-card/50 backdrop-blur-sm rounded-2xl p-8 border border-border"
+                        className="h-full bg-card/50 backdrop-blur-sm rounded-2xl p-8 border border-border"
                     >
+                        <div className="mb-6">
+                            <h3 className="text-2xl font-semibold text-foreground mb-2">
+                                Envíanos tu consulta
+                            </h3>
+                        </div>
+
                         <ContactForm selectedService={selectedService} />
                     </motion.div>
 
@@ -48,88 +54,81 @@ function ContactSection({ selectedService }) {
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.8 }}
-                        className="space-y-8"
+                        className="h-full flex flex-col"
                     >
-                        <div>
-                            <h3 className="text-2xl font-semibold text-foreground mb-6">
-                                Información de Contacto
-                            </h3>
+                        <h3 className="text-2xl font-semibold text-foreground mb-6">
+                            Información de Contacto
+                        </h3>
 
-                            <div className="space-y-6">
-                                <a
-                                    href="https://wa.me/5491112345678"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="flex items-start space-x-4 p-4 bg-primary/10 rounded-xl hover:bg-primary/20 transition-all duration-300 group"
-                                >
-                                    <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
-                                        <MessageCircle size={24} className="text-background" />
-                                    </div>
-
-                                    <div>
-                                        <p className="text-sm text-foreground/70 mb-1">WhatsApp</p>
-                                        <p className="text-lg font-semibold text-foreground">
-                                            +54 11 1234-5678
-                                        </p>
-                                        <p className="text-sm text-primary mt-1">
-                                            Haz clic para chatear
-                                        </p>
-                                    </div>
-                                </a>
-
-                                <div className="flex items-start space-x-4 p-4 bg-card rounded-xl border border-border">
-                                    <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                                        <Phone size={24} className="text-primary" />
-                                    </div>
-
-                                    <div>
-                                        <p className="text-sm text-foreground/70 mb-1">Teléfono</p>
-                                        <p className="text-lg font-semibold text-foreground">
-                                            +54 11 1234-5678
-                                        </p>
-                                    </div>
+                        <div className="lg:flex-1 lg:flex lg:flex-col lg:justify-between space-y-6 lg:space-y-0 lg:gap-6">
+                            <a
+                                href="https://wa.me/5491135862514"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex items-start space-x-4 p-4 bg-primary/10 rounded-xl hover:bg-primary/20 transition-all duration-300 group"
+                            >
+                                <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                                    <WhatsAppIcon className="h-6 w-6 text-background" />
                                 </div>
 
-                                <div className="flex items-start space-x-4 p-4 bg-card rounded-xl border border-border">
-                                    <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                                        <Mail size={24} className="text-primary" />
-                                    </div>
+                                <div>
+                                    <p className="text-sm text-foreground/70 mb-1">WhatsApp</p>
+                                    <p className="text-lg font-semibold text-foreground">
+                                        +54 11 3586-2514
+                                    </p>
+                                    <p className="text-sm text-primary mt-1">
+                                        Haz clic para chatear
+                                    </p>
+                                </div>
+                            </a>
 
-                                    <div>
-                                        <p className="text-sm text-foreground/70 mb-1">Email</p>
-                                        <p className="text-lg font-semibold text-foreground">
-                                            info@mikelflash.com
-                                        </p>
-                                    </div>
-                                    </div>
-
-                                <div className="flex items-start space-x-4 p-4 bg-card rounded-xl border border-border">
-                                    <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                                        <MapPin size={24} className="text-primary" />
-                                    </div>
-
-                                    <div>
-                                        <p className="text-sm text-foreground/70 mb-1">Ubicación</p>
-                                        <p className="text-lg font-semibold text-foreground">
-                                            Buenos Aires, Argentina
-                                        </p>
-                                    </div>
+                            <a
+                                href="mailto:ort.ortega.refacciones@gmail.com?subject=Consulta desde la web de Mikel Flash"
+                                className="flex items-start space-x-4 p-4 bg-card rounded-xl border border-border hover:border-primary/40 hover:bg-primary/5 transition-all duration-300 group"
+                            >
+                                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors duration-300">
+                                    <Mail size={24} className="text-primary" />
                                 </div>
 
-                                <div className="flex items-start space-x-4 p-4 bg-card rounded-xl border border-border">
-                                    <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                                        <Clock size={24} className="text-primary" />
-                                    </div>
+                                <div className="min-w-0 flex-1">
+                                    <p className="text-sm text-foreground/70 mb-1">Email</p>
 
-                                    <div>
-                                        <p className="text-sm text-foreground/70 mb-1">Horario</p>
-                                        <p className="text-lg font-semibold text-foreground">
-                                            Lun - Vie: 8:00 - 18:00
-                                        </p>
-                                        <p className="text-foreground/70">
-                                            Sáb: 9:00 - 13:00
-                                        </p>
-                                    </div>
+                                    <p className="text-[13px] sm:text-lg font-semibold text-foreground leading-snug whitespace-nowrap overflow-hidden text-ellipsis">
+                                        ort.ortega.refacciones@gmail.com
+                                    </p>
+
+                                    <p className="text-sm text-primary mt-1">
+                                        Haz clic para enviar un mail
+                                    </p>
+                                </div>
+                            </a>
+
+                            <div className="flex items-start space-x-4 p-4 bg-card rounded-xl border border-border">
+                                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                                    <MapPin size={24} className="text-primary" />
+                                </div>
+
+                                <div>
+                                    <p className="text-sm text-foreground/70 mb-1">Ubicación</p>
+                                    <p className="text-lg font-semibold text-foreground">
+                                        Buenos Aires, Argentina
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div className="flex items-start space-x-4 p-4 bg-card rounded-xl border border-border">
+                                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                                    <Clock size={24} className="text-primary" />
+                                </div>
+
+                                <div>
+                                    <p className="text-sm text-foreground/70 mb-1">Horario</p>
+                                    <p className="text-lg font-semibold text-foreground">
+                                        Lun - Vie: 8:00 - 18:00
+                                    </p>
+                                    <p className="text-foreground/70">
+                                        Sáb: 9:00 - 13:00
+                                    </p>
                                 </div>
                             </div>
                         </div>

@@ -1,0 +1,36 @@
+import React from 'react';
+
+const WHATSAPP_PHONE = '5491135862514';
+
+const DEFAULT_MESSAGE = 'Hola, quiero hacer una consulta desde la web de Mikel Flash.';
+
+function WhatsAppIcon() {
+    return (
+        <svg
+            viewBox="0 0 32 32"
+            aria-hidden="true"
+            className="h-7 w-7"
+            fill="currentColor"
+        >
+            <path d="M16.01 3C8.84 3 3 8.73 3 15.78c0 2.25.6 4.45 1.75 6.38L3.6 29l7.05-1.12A13.2 13.2 0 0 0 16.01 29C23.18 29 29 23.27 29 16.22S23.18 3 16.01 3Zm0 23.78c-1.73 0-3.42-.45-4.9-1.3l-.35-.2-4.18.66.68-4.03-.23-.37a10.42 10.42 0 0 1-1.62-5.76c0-5.82 4.75-10.56 10.6-10.56 5.84 0 10.59 4.94 10.59 11s-4.75 10.56-10.59 10.56Zm5.8-7.9c-.32-.16-1.87-.91-2.16-1.02-.29-.1-.5-.16-.71.16-.21.31-.82 1.02-1.01 1.23-.18.21-.37.24-.69.08-.32-.16-1.34-.49-2.55-1.55-.94-.83-1.58-1.86-1.77-2.17-.18-.31-.02-.48.14-.64.14-.14.32-.37.48-.55.16-.18.21-.31.32-.52.1-.21.05-.39-.03-.55-.08-.16-.71-1.7-.97-2.33-.26-.61-.52-.53-.71-.54h-.61c-.21 0-.55.08-.84.39-.29.31-1.1 1.07-1.1 2.62s1.13 3.05 1.29 3.26c.16.21 2.23 3.37 5.39 4.72.75.32 1.34.51 1.8.65.76.24 1.45.2 1.99.12.61-.09 1.87-.76 2.13-1.49.26-.73.26-1.36.18-1.49-.08-.13-.29-.21-.61-.37Z" />
+        </svg>
+    );
+}
+
+function WhatsAppFloatingButton() {
+    const whatsappUrl = `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(DEFAULT_MESSAGE)}`;
+
+    return (
+        <a
+            href={whatsappUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Contactar por WhatsApp"
+            className="fixed bottom-5 right-5 z-40 flex h-14 w-14 items-center justify-center rounded-full bg-[#1ebe5d] text-white shadow-[0_8px_22px_rgba(30,190,93,0.25)] ring-1 ring-white/10 transition-transform duration-300 hover:scale-105 active:scale-95 md:bottom-6 md:right-6 md:h-16 md:w-16"
+        >
+            <WhatsAppIcon />
+        </a>
+    );
+}
+
+export default WhatsAppFloatingButton;

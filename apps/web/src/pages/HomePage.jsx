@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { Paintbrush, Building2, Droplets, Hammer, Home, Wrench } from 'lucide-react';
 import Header from '@/components/Header.jsx';
@@ -10,6 +10,7 @@ import PortfolioSection from '@/components/sections/PortfolioSection.jsx';
 import ReviewsSection from '@/components/sections/ReviewsSection.jsx';
 import ContactSection from '@/components/sections/ContactSection.jsx';
 import { useParallax } from '@/hooks/useParallax';
+import WhatsAppFloatingButton from '@/components/WhatsAppFloatingButton.jsx';
 
 
 function HomePage() {
@@ -183,38 +184,45 @@ function HomePage() {
   const testimonials = [
     {
       name: 'María Fernández',
-      testimonial: 'Excelente trabajo en la remodelación de mi departamento. Cumplieron con los tiempos y la calidad superó mis expectativas.',
+      testimonial: 'Los contraté para pintar el departamento y quedó muy bien. Fueron prolijos, ordenados y cumplieron con lo que habíamos hablado.',
       rating: 5
     },
     {
       name: 'Carlos Rodríguez',
-      testimonial: 'Profesionales de primera. La impermeabilización de mi terraza quedó perfecta y no he tenido ninguna filtración.',
+      testimonial: 'Tenía problemas de humedad en la terraza y desde que hicieron el trabajo no volvió a filtrar. Me explicaron todo y trabajaron muy prolijo.',
       rating: 5
     },
     {
       name: 'Ana Martínez',
-      testimonial: 'Muy recomendables. Hicieron la pintura completa de mi casa y el resultado es impecable. Muy prolijos y responsables.',
+      testimonial: 'Hicieron arreglos y pintura en casa. Me gustó que fueron claros con los tiempos y dejaron todo limpio al terminar.',
       rating: 5
     },
     {
       name: 'Jorge López',
-      testimonial: 'Contraté sus servicios para trabajos en altura en mi edificio. Excelente equipo, muy seguros y eficientes.',
+      testimonial: 'Necesitábamos hacer trabajos en altura en el edificio y respondieron muy bien. Se los vio responsables y con experiencia.',
       rating: 5
     },
     {
       name: 'Laura Gómez',
-      testimonial: 'La remodelación de mi cocina quedó hermosa. Atentos a cada detalle y siempre dispuestos a escuchar mis ideas.',
+      testimonial: 'Me ayudaron con una remodelación chica en la cocina y quedó mucho mejor de lo que esperaba. Muy buena predisposición.',
+      rating: 5
+    },
+    {
+      name: 'Sergio Ramírez',
+      testimonial: 'Los llamé por unas reparaciones en pared y pintura exterior. Vinieron, revisaron bien el trabajo y cumplieron con el presupuesto.',
+      rating: 5
+    },
+    {
+      name: 'Patricia Suárez',
+      testimonial: 'Muy buena atención desde el primer contacto. Fueron puntuales, prolijos y el resultado final quedó muy parejo.',
+      rating: 5
+    },
+    {
+      name: 'Martín Acosta',
+      testimonial: 'Hicieron mantenimiento en el frente del local y quedó excelente. Trabajaron rápido, sin vueltas y con buena terminación.',
       rating: 5
     }
   ];
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
-    }, 5000);
-
-    return () => clearInterval(interval);
-  }, [testimonials.length]);
 
   const scrollToContact = () => {
     const element = document.querySelector('#contacto');
@@ -285,6 +293,8 @@ function HomePage() {
       <ContactSection selectedService={selectedService} />
 
       <Footer />
+
+      <WhatsAppFloatingButton />
     </>
   );
 }

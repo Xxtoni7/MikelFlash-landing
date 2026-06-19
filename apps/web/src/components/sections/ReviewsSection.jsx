@@ -1,10 +1,24 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { motion } from 'framer-motion';
 import TestimonialCard from '@/components/TestimonialCard.jsx';
 
+const TESTIMONIAL_INTERVAL_MS = 6000;
+
 function ReviewsSection({ testimonials, currentTestimonial, setCurrentTestimonial }) {
     const selectedTestimonial = testimonials[currentTestimonial];
+
+    useEffect(() => {
+        if (testimonials.length <= 1) return undefined;
+
+        const timer = globalThis.setTimeout(() => {
+            setCurrentTestimonial((prevIndex) =>
+                prevIndex === testimonials.length - 1 ? 0 : prevIndex + 1
+            );
+        }, TESTIMONIAL_INTERVAL_MS);
+
+        return () => globalThis.clearTimeout(timer);
+    }, [currentTestimonial, setCurrentTestimonial, testimonials.length]);
 
     return (
         <section id="testimonios" className="py-24 bg-gradient-to-b from-card/30 to-background relative overflow-hidden">
